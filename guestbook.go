@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"html/template"
 )
 
 // check - Error handling function to
@@ -15,9 +16,9 @@ func check(err error){
 
 // viewHandler - Handle browser requests for a certain path.
 func viewHandler(writer http.ResponseWriter, request *http.Request){
-	placeholder := []byte("signature list goes here")
-	_, err := writer.Write(placeholder)
+	html, err := template.ParseFiles("view.html")
 	check(err)
+	err = html.Execute(writer, nil)
 }
 
 // The app will responding to requests.
