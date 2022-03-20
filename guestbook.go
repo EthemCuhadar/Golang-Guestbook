@@ -20,6 +20,7 @@ func viewHandler(writer http.ResponseWriter, request *http.Request){
 	check(err)
 }
 
+// The app will responding to requests.
 func main(){
 	http.HandleFunc("/guestbook", viewHandler)
 	err := http.ListenAndServe("localhost:8080", nil)
